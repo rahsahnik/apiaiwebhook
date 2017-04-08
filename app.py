@@ -33,7 +33,7 @@ def webhook():
 
 
 def processRequest(req):
-    if req.get("result").get("action") == "yahooWeatherForecast":
+    if req.get("result").get("action") != "yahooWeatherForecast":
         global qur
         global fl
         qur = wikipedia.summary("hello",sentence=1)
