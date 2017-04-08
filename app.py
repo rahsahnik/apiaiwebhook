@@ -20,9 +20,6 @@ app = Flask(__name__)
 def webhook():
     req = request.get_json(silent=True, force=True)
     
-    print("Request:")
-    print(json.dumps(req, indent=4))
-    
     res = processRequest(req)
 
     res = json.dumps(res, indent=4)
@@ -33,6 +30,7 @@ def webhook():
 
 
 def processRequest(req):
+
     if req.get("result").get("action") != "wiki":        
         return {}
     #baseurl = "https://query.yahooapis.com/v1/public/yql?"
@@ -40,12 +38,7 @@ def processRequest(req):
     #if yql_query is None:
     #    return {}
     #yql_url = baseurl + urllib.urlencode({'q': yql_query}) + "&format=json"
-    #print(yql_url)
-
     #result = urllib.urlopen(yql_url).read()
-    #print("yql result: ")
-    #print(result)
-
     #data = json.loads(result)
     res = makeWebhookResult()
     return res
@@ -90,7 +83,7 @@ def makeWebhookResult():
 
     # print(json.dumps(item, indent=4))
 
-    speech = wikipedia.summary("hell",sentence=1)
+    speech = "good night"
    
 
     return {
