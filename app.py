@@ -93,7 +93,7 @@ def makeWebhookResult(data):
     print("Response:")
     print(speech)
     
-    speech = query12
+    speech = "still working"
     
     slack_message = {
         "text": speech,
