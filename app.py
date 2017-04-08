@@ -29,13 +29,13 @@ def webhook():
 def processRequest(req):
     if req.get("result").get("action") != "wiki":        
         return {}
-    fin = wikipedia.s
-    res = makeWebhookResult()
+    fin = wikipedia.search("parakeet")
+    res = makeWebhookResult(fin)
     return res
 
 
-def makeWebhookResult():
-    speech = wikipedia.summary("hell",sentence=1)
+def makeWebhookResult(fin):
+    speech = fin
     return {
         "speech": speech,
         "displayText": speech,
