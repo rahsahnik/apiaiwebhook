@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import wikipedia
 import urllib
 import json
 import os
