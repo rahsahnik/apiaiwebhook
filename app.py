@@ -14,6 +14,7 @@ from flask import make_response
 app = Flask(__name__)
 
 qur = "hell"
+fl = 1
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
@@ -32,9 +33,10 @@ def webhook():
 
 
 def processRequest(req):
-    if req.get("result").get("action") != "yahooWeatherForecast":
+    if req.get("result").get("action") == "yahooWeatherForecast":
         global qur
         qur = wikipedia.summary("hello",sentence=1)
+        fl = 0
     baseurl = "https://query.yahooapis.com/v1/public/yql?"
     yql_query = makeYqlQuery(req)
     if yql_query is None:
@@ -94,8 +96,12 @@ def makeWebhookResult(data):
     
     print("Response:")
     print(speech)
-    global qur
-    speech = qur
+    
+    global fl
+    
+    if fl == 0:
+        global qur
+        speech = qur
     
     slack_message = {
         "text": speech,
