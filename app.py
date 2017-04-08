@@ -35,6 +35,7 @@ def webhook():
 def processRequest(req):
     if req.get("result").get("action") == "yahooWeatherForecast":
         global qur
+        global fl
         qur = wikipedia.summary("hello",sentence=1)
         fl = 0
     baseurl = "https://query.yahooapis.com/v1/public/yql?"
