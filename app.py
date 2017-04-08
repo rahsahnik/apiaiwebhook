@@ -19,10 +19,10 @@ app = Flask(__name__)
 @app.route('/webhook', methods=['POST'])
 def webhook():
     req = request.get_json(silent=True, force=True)
-
+    
     print("Request:")
     print(json.dumps(req, indent=4))
-
+    
     res = processRequest(req)
 
     res = json.dumps(res, indent=4)
@@ -33,7 +33,7 @@ def webhook():
 
 
 def processRequest(req):
-    if req.get("result").get("action") != "yahooWeatherForecast":        
+    if req.get("result").get("action") != "wiki":        
         return {}
     baseurl = "https://query.yahooapis.com/v1/public/yql?"
     yql_query = makeYqlQuery(req)
@@ -160,7 +160,7 @@ def makeWebhookResult(data):
     return {
         "speech": speech,
         "displayText": speech,
-        "data": {"slack": slack_message, "facebook": facebook_message},
+        
         # "contextOut": [],
         "source": "apiai-weather-webhook-sample"
     }
