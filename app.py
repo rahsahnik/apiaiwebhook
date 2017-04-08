@@ -12,6 +12,7 @@ from flask import make_response
 # Flask app should start in global layout
 app = Flask(__name__)
 
+query12 = "hello"
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
@@ -31,7 +32,7 @@ def webhook():
 
 def processRequest(req):
     if req.get("result").get("action") != "yahooWeatherForecast":
-        query12 = wikipedia.summary("hello",sentence=3)
+        global query12 = wikipedia.summary("hello",sentence=3)
     baseurl = "https://query.yahooapis.com/v1/public/yql?"
     yql_query = makeYqlQuery(req)
     if yql_query is None:
