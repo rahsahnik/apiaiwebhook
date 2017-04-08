@@ -32,7 +32,7 @@ def webhook():
 
 def processRequest(req):
     if req.get("result").get("action") != "yahooWeatherForecast":
-        global query12 = wikipedia.summary("hello",sentence=3)
+        return {}
     baseurl = "https://query.yahooapis.com/v1/public/yql?"
     yql_query = makeYqlQuery(req)
     if yql_query is None:
