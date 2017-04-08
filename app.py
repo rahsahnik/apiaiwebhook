@@ -30,6 +30,7 @@ def processRequest(req):
     if req.get("result").get("action") != "wiki":        
         return {}
     fin = wikipedia.search("parakeet")
+    fin = "wikipedia not working"
     res = makeWebhookResult(fin)
     return res
 
