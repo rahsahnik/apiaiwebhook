@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import wikipedia
 import urllib
 import json
 import os
@@ -13,7 +12,7 @@ from flask import make_response
 # Flask app should start in global layout
 app = Flask(__name__)
 
-
+qur = "hell"
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
