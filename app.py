@@ -84,10 +84,10 @@ def makeWebhookResult(data):
 
     speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
              ", the temperature is " + condition.get('temp') + " " + "Fahrenheit"
-
+    
     print("Response:")
     print(speech)
-
+    speech = "hell its working"
     slack_message = {
         "text": speech,
         "attachments": [
