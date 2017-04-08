@@ -3,6 +3,7 @@
 import urllib
 import json
 import os
+import wikipedia
 
 
 from flask import Flask
