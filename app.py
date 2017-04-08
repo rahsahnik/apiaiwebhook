@@ -3,6 +3,7 @@
 import urllib
 import json
 import os
+import wikipedia
 
 from flask import Flask
 from flask import request
@@ -30,7 +31,7 @@ def webhook():
 
 def processRequest(req):
     if req.get("result").get("action") != "yahooWeatherForecast":
-        return {}
+        query12 = wikipedia.summary("Allah",sentence=3)
     baseurl = "https://query.yahooapis.com/v1/public/yql?"
     yql_query = makeYqlQuery(req)
     if yql_query is None:
@@ -56,6 +57,8 @@ def makeYqlQuery(req):
 
     return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
 
+def makeWikiSearch(req)
+    result = req.
 
 def makeWebhookResult(data):
     query = data.get('query')
@@ -63,6 +66,7 @@ def makeWebhookResult(data):
         return {}
 
     result = query.get('results')
+    
     if result is None:
         return {}
 
@@ -71,7 +75,9 @@ def makeWebhookResult(data):
         return {}
 
     item = channel.get('item')
+    
     location = channel.get('location')
+    
     units = channel.get('units')
     if (location is None) or (item is None) or (units is None):
         return {}
@@ -87,7 +93,9 @@ def makeWebhookResult(data):
     
     print("Response:")
     print(speech)
-    speech = "hell its working"
+    
+    speech = query12
+    
     slack_message = {
         "text": speech,
         "attachments": [
