@@ -88,7 +88,7 @@ def makeWebhookResult(data):
     print("Response:")
     print(speech)
 
-    """slack_message = {
+    slack_message = {
         "text": speech,
         "attachments": [
             {
@@ -120,9 +120,9 @@ def makeWebhookResult(data):
                 "thumb_url": "http://l.yimg.com/a/i/us/we/52/" + condition.get('code') + ".gif"
             }
         ]
-    }"""
+    }
 
-    """facebook_message = {
+    facebook_message = {
         "attachment": {
             "type": "template",
             "payload": {
@@ -143,7 +143,7 @@ def makeWebhookResult(data):
                 ]
             }
         }
-    }"""
+    }
 
     print(json.dumps(slack_message))
 
