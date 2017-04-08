@@ -92,8 +92,8 @@ def makeWebhookResult(data):
     
     print("Response:")
     print(speech)
-    
-    speech = "still working"
+    global qur
+    speech = qur
     
     slack_message = {
         "text": speech,
