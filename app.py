@@ -3,7 +3,6 @@
 import urllib
 import json
 import os
-import wikipedia
 
 from flask import Flask
 from flask import request
@@ -94,7 +93,7 @@ def makeWebhookResult(data):
     print("Response:")
     print(speech)
     
-    speech = query12
+    speech = "blah blah"
     
     slack_message = {
         "text": speech,
