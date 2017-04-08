@@ -13,7 +13,7 @@ from flask import make_response
 # Flask app should start in global layout
 app = Flask(__name__)
 
-qur = "hell"
+
 fl = 1
 
 @app.route('/webhook', methods=['POST'])
@@ -99,8 +99,7 @@ def makeWebhookResult(data):
     global fl
     
     if fl == 0:
-        global qur
-        speech = qur
+        speech = "hell"
     
     slack_message = {
         "text": speech,
