@@ -35,7 +35,7 @@ def processRequest(req):
 
 
 def makeWebhookResult():
-    speech = "good night"
+    speech = wikipedia.summary("hell",sentence=1)
     return {
         "speech": speech,
         "displayText": speech,
