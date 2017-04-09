@@ -25,7 +25,8 @@ def webhook():
     r = make_response(res)
     r.headers['Content-Type'] = 'application/json'
     return r
-    
+   
+def processRequest(req):    
     #for wikipedia search
     if req.get("result").get("action") == "wiki":        
         param = req.get("result").get("parameters").get("par1")    
