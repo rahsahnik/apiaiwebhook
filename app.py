@@ -43,6 +43,8 @@ def processRequest(req):
             client = wolframalpha.Client(app_id)
             john = client.query(pars)
             answer = next(john.results).text
+            if answer is None:
+                raise Exception("I know python!")
             res = makeWebhookResult(answer)
             return res
         except:
