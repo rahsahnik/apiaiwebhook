@@ -29,8 +29,19 @@ def webhook():
 
 def processRequest(req):
     #for time
-    if req.get("result").get("action") == "time":        
-        tim = datetime.now().strftime("The date is %d-%m-%Y and the time is %H:%M")
+    if req.get("result").get("action") == "time":
+        
+        oh = datetime.now().strftime("%H")
+        rh = int(oh) + 5
+        
+        om = datetime.now().strftime("%M")
+        om = om + 30
+        if om >= 60
+            om = om % 60    
+            rh = rh+1
+        
+        tim = datetime.now().strftime("The date is %m-%d-%Y")
+        tim = tim + " And the time is: " + str(rh) + ":" + str(om)
         res = makeWebhookResult(tim)
         return res
     
