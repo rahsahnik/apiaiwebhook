@@ -58,7 +58,15 @@ def processRequest(req):
         answer = next(john.results).text
         res = makeWebhookResult(answer)
         return res
-        
+    
+    elif req.get("result").get("action") == "time":
+        app_id = "4393W5-W6E838H957"
+        client = wolframalpha.Client(app_id)
+        john = client.query(time in bangalore)
+        answer = next(john.results).text
+        res = makeWebhookResult(answer)
+        return res
+           
     #for math calculations
     elif req.get("result").get("action") == "math":
         str1 = req.get("result").get("parameters").get("number")
