@@ -29,7 +29,7 @@ def webhook():
 def processRequest(req):    
     #for wikipedia search
     if req.get("result").get("action") == "wiki":        
-        param = req.get("result").get("parameters").get("par1")    
+        param = req.get("result").get("parameters").get("any")    
         fin = wikipedia.summary(param,sentences=2)    
         res = makeWebhookResult(fin)
         return res
@@ -43,8 +43,6 @@ def processRequest(req):
             client = wolframalpha.Client(app_id)
             john = client.query(pars)
             answer = next(john.results).text
-            if answer is None:
-                raise Exception("I know python!")
             res = makeWebhookResult(answer)
             return res
         except:
