@@ -57,7 +57,7 @@ def processRequest(req):
         
         if oper1 == "+":
             res1 = str1 + str2
-            tom = "The result is "
+            tom = "The result is "+ str(res1)
             res = makeWebhookResult(tom)
             return res
         elif oper1 == "-":
