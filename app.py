@@ -47,8 +47,8 @@ def processRequest(req):
             return res
         except:
             req2 = req.get("result").get("parameters").get("any")
-            fin = wikipedia.summary(param,sentences=2)    
-            res = makeWebhookResult(fin)
+            fin1 = wikipedia.summary(req2,sentences=2)    
+            res = makeWebhookResult(fin1)
             return res
             
     #for local time
