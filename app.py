@@ -55,7 +55,7 @@ def processRequest(req):
         str2 = req.get("result").get("parameters").get("number1")
         oper = req.get("result").get("parameters").get("operation")
         res = makeWebhookResult("in math")
-
+        return res
 
 def makeWebhookResult(fin):
     speech = fin
