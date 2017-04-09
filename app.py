@@ -53,15 +53,15 @@ def processRequest(req):
     elif req.get("result").get("action") == "math":
         str1 = req.get("result").get("parameters").get("number")
         str2 = req.get("result").get("parameters").get("number1")
-        oper = req.get("result").get("parameters").get("operation")
-        
-        if oper == "+":
+        oper1 = req.get("result").get("parameters").get("operation")
+        res1=0
+        if oper1 == "+":
             res1 = int(str1)+int(str2)
-        elif oper == "-":
+        elif oper1 == "-":
             res1 = int(str1)-int(str2)
-        elif oper == "/":
+        elif oper1 == "/":
             res1 = float(int(str1))/int(str2)
-        elif oper == '*':
+        elif oper1 == '*':
             res1 = int(str1)*int(str2)
         
         tom = "The result is "+ str(res1)
