@@ -36,14 +36,21 @@ def processRequest(req):
     
     #for wolframalpha
     elif req.get("result").get("action") == "wolf":
-        pars = req.get("result").get("resolvedQuery")
-        app_id = "4393W5-W6E838H957"
-        client = wolframalpha.Client(app_id)
-        john = client.query(pars)
-        answer = next(john.results).text
-        res = makeWebhookResult(answer)
-        return res
-    
+        
+        try:
+            pars = req.get("result").get("resolvedQuery")
+            app_id = "4393W5-W6E838H957"
+            client = wolframalpha.Client(app_id)
+            john = client.query(pars)
+            answer = next(john.results).text
+            res = makeWebhookResult(answer)
+            return res
+        except:
+            req2 = req.get("result").get("parameters").get("any")
+            fin = wikipedia.summary(param,sentences=2)    
+            res = makeWebhookResult(fin)
+            return res
+            
     #for local time
     elif req.get("result").get("action") == "time":
         app_id = "4393W5-W6E838H957"
