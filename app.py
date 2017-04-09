@@ -49,9 +49,14 @@ def processRequest(req):
         res = makeWebhookResult(fin)
         return res
     
+    #for wolframalpha
     elif req.get("result").get("action") == "wolf":
         pars = req.get("result").get("resolvedQuery")
-        res = makeWebhookResult(pars)
+        app_id = "4393W5-W6E838H957"
+        client = wolframalpha.Client(app_id)
+        john = client.query(pars)
+        answer = next(john.results).text
+        res = makeWebhookResult(answer)
         return res
         
     #for math calculations
