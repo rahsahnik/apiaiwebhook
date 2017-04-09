@@ -4,7 +4,7 @@ import urllib
 import json
 import os
 import wikipedia
-import wolframalf
+import wolframalpha
 from datetime import datetime
 
 from flask import Flask
