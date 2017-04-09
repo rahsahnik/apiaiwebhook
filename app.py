@@ -36,7 +36,7 @@ def processRequest(req):
         
         om = datetime.now().strftime("%M")
         on = int(om) + 30
-        if on >= 60
+        if on >= 60:
             on = on % 60    
             rh = rh+1
         
