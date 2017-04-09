@@ -35,13 +35,13 @@ def processRequest(req):
         rh = int(oh) + 5
         
         om = datetime.now().strftime("%M")
-        om = om + 30
-        if om >= 60
-            om = om % 60    
+        on = int(om) + 30
+        if on >= 60
+            on = on % 60    
             rh = rh+1
         
         tim = datetime.now().strftime("The date is %m-%d-%Y")
-        tim = tim + " And the time is: " + str(rh) + ":" + str(om)
+        tim = tim + " And the time is: " + str(rh) + ":" + str(on)
         res = makeWebhookResult(tim)
         return res
     
