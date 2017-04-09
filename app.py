@@ -56,7 +56,7 @@ def processRequest(req):
         oper1 = req.get("result").get("parameters").get("operation")
         
         if oper1 == "+":
-            res1 = int(str1) + int(str2)
+            res1 = str1 + str2
             tom = "The result is "
             res = makeWebhookResult(tom)
             return res
