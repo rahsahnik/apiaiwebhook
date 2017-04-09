@@ -4,8 +4,8 @@ import urllib
 import json
 import os
 import wikipedia
+import wolframalf
 from datetime import datetime
-
 
 from flask import Flask
 from flask import request
@@ -49,6 +49,11 @@ def processRequest(req):
         res = makeWebhookResult(fin)
         return res
     
+    elif req.get("result").get("action") == "wolf":
+        pars = req.get("result").get("resolvedQuery")
+        res = makeWebhookResult(pars)
+        return res
+        
     #for math calculations
     elif req.get("result").get("action") == "math":
         str1 = req.get("result").get("parameters").get("number")
