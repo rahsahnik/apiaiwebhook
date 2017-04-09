@@ -32,7 +32,7 @@ def processRequest(req):
     
     param = req.get("result").get("parameters").get("par1")
     
-    fin = wikipedia.summary(parm,sentences=1)
+    fin = wikipedia.summary(param,sentences=1)
     
     res = makeWebhookResult(fin)
     return res
