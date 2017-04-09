@@ -30,11 +30,9 @@ def processRequest(req):
     if req.get("result").get("action") != "wiki":        
         return {}
     
-    result = req.get("result")
-    parameters = result.get("parameters")
-    search_element = parameters.get("par1")
-     
-    fin = wikipedia.summary(search_element,sentences=1)
+    param = req.get("result").get("parameters").get("par1")
+    
+    fin = wikipedia.summary("hell",sentences=1)
     
     res = makeWebhookResult(fin)
     return res
