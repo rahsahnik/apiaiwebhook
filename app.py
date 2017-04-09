@@ -62,7 +62,7 @@ def processRequest(req):
     elif req.get("result").get("action") == "time":
         app_id = "4393W5-W6E838H957"
         client = wolframalpha.Client(app_id)
-        john = client.query(time in bangalore)
+        john = client.query("time in bangalore")
         answer = next(john.results).text
         res = makeWebhookResult(answer)
         return res
@@ -93,6 +93,7 @@ def processRequest(req):
             tom = "The result is "+ str(res1)
             res = makeWebhookResult(tom)
             return res
+        
     #for weather (yahoo api)
     elif req.get("result").get("action") == "yahooWeatherForecast":
         baseurl = "https://query.yahooapis.com/v1/public/yql?"
