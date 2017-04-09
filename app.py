@@ -75,8 +75,27 @@ def processRequest(req):
             tom = "The result is "+ str(res1)
             res = makeWebhookResult(tom)
             return res
-        
+    #for weather (yahoo api)
+    elif req.get("result").get("action") == "yahooWeatherForecast":
+        baseurl = "https://query.yahooapis.com/v1/public/yql?"
+        yql_query = makeYqlQuery(req)
+        if yql_query is None:
+        return {}
+        yql_url = baseurl + urllib.urlencode({'q': yql_query}) + "&format=json"
+        result = urllib.urlopen(yql_url).read()
+        data = json.loads(result)
+        res = makeWebhookResult1(data)
+        return res
 
+def makeYqlQuery(req):
+    result = req.get("result")
+    parameters = result.get("parameters")
+    global fl
+    city = parameters.get("geo-city")
+    if city is None:
+        return None
+
+    return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"    
 
 def makeWebhookResult(fin):
     speech = fin
@@ -86,6 +105,44 @@ def makeWebhookResult(fin):
         
         # "contextOut": [],
         "source": "from my example"
+    }
+
+def makeWebhookResult1(data):
+    query = data.get('query')
+    if query is None:
+        return {}
+
+    result = query.get('results')
+    
+    if result is None:
+        return {}
+
+    channel = result.get('channel')
+    if channel is None:
+        return {}
+
+    item = channel.get('item')
+    
+    location = channel.get('location')
+    
+    units = channel.get('units')
+    if (location is None) or (item is None) or (units is None):
+        return {}
+
+    condition = item.get('condition')
+    if condition is None:
+        return {}
+
+
+    speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
+             ", the temperature is " + condition.get('temp') + " " + "Fahrenheit"
+    
+    return {
+        "speech": speech,
+        "displayText": speech,
+        
+        # "contextOut": [],
+        "source": "apiai-weather-webhook-sample"
     }
 
 
