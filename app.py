@@ -4,6 +4,7 @@ import urllib
 import json
 import os
 import wikipedia
+from datetime import datetime
 
 
 from flask import Flask
@@ -27,15 +28,18 @@ def webhook():
 
 
 def processRequest(req):
-    if req.get("result").get("action") != "wiki":        
-        return {}
+    #for time
+    if req.get("result").get("action") == "time":        
+        tim = datetime.now().strftime("The date is %d-%m-%Y and the time is %H:%M")
+        res = makeWebhookResult(tim)
+        return res
     
-    param = req.get("result").get("parameters").get("par1")
-    
-    fin = wikipedia.summary(param,sentences=2)
-    
-    res = makeWebhookResult(fin)
-    return res
+    #for wikipedia search
+    elif req.get("result").get("action") == "wiki":        
+        param = req.get("result").get("parameters").get("par1")    
+        fin = wikipedia.summary(param,sentences=2)    
+        res = makeWebhookResult(fin)
+        return res
 
 
 def makeWebhookResult(fin):
