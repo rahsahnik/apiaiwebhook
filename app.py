@@ -29,17 +29,14 @@ def webhook():
 
 def processRequest(req):
     #for time
-    if req.get("result").get("action") == "time":
-        
+    if req.get("result").get("action") == "time":        
         oh = datetime.now().strftime("%H")
-        rh = int(oh) + 5
-        
+        rh = int(oh) + 5        
         om = datetime.now().strftime("%M")
         on = int(om) + 30
         if on >= 60:
             on = on % 60    
-            rh = rh+1
-        
+            rh = rh+1        
         tim = datetime.now().strftime("The date is %m-%d-%Y")
         tim = tim + " And the time is: " + str(rh) + ":" + str(on)
         res = makeWebhookResult(tim)
@@ -51,6 +48,13 @@ def processRequest(req):
         fin = wikipedia.summary(param,sentences=2)    
         res = makeWebhookResult(fin)
         return res
+    
+    #for math calculations
+    elif req.get("result").get("action") == "math":
+        str1 = req.get("result").get("parameters").get("number")
+        str2 = req.get("result").get("parameters").get("number1")
+        oper = req.get("result").get("parameters").get("operation")
+        res = makeWebhookResult("in math")
 
 
 def makeWebhookResult(fin):
