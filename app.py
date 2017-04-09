@@ -57,12 +57,12 @@ def processRequest(req):
         
         if oper1 == '+':
             res1 = "hell"
-        elif oper1 == "-":
-            res1 = int(str1)-int(str2)
-        elif oper1 == "/":
-            res1 = float(int(str1))/int(str2)
-        elif oper1 == '*':
-            res1 = int(str1)*int(str2)
+        #elif oper1 == "-":
+        #    res1 = int(str1)-int(str2)
+        #elif oper1 == "/":
+        #    res1 = float(int(str1))/int(str2)
+        #elif oper1 == '*':
+        #    res1 = int(str1)*int(str2)
         
         tom = "The result is "+ str(res1)
         res = makeWebhookResult(tom)
