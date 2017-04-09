@@ -55,7 +55,7 @@ def processRequest(req):
         str2 = req.get("result").get("parameters").get("number1")
         oper1 = req.get("result").get("parameters").get("operation")
         
-        if oper1 == '+':
+        if oper1 == "+":
             res1 = "hell"
         #elif oper1 == "-":
         #    res1 = int(str1)-int(str2)
@@ -64,7 +64,7 @@ def processRequest(req):
         #elif oper1 == '*':
         #    res1 = int(str1)*int(str2)
         
-        tom = "The result is "+ str(res1)
+        tom = "The result is "+ res1
         res = makeWebhookResult(tom)
         return res
 
