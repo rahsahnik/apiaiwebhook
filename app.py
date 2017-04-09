@@ -54,18 +54,18 @@ def processRequest(req):
         str1 = req.get("result").get("parameters").get("number")
         str2 = req.get("result").get("parameters").get("number1")
         oper = req.get("result").get("parameters").get("operation")
-        res=0
+        res1=0
         
         if oper == "+":
-            res = int(str1)+int(str2)
+            res1 = int(str1)+int(str2)
         elif oper == "-"
-            res = int(str1)-int(str2)
+            res1 = int(str1)-int(str2)
         elif oper == "/"
-            res = int(str1)/int(str2)
+            res1 = int(str1)/int(str2)
         elif oper == '*'
-            res = int(str1)*int(str2)
+            res1 = int(str1)*int(str2)
         
-        tom = "The result is "+ str(res)
+        tom = "The result is "+ str(res1)
         res = makeWebhookResult(tom)
         return res
 
