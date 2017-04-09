@@ -58,11 +58,11 @@ def processRequest(req):
         
         if oper == "+":
             res1 = int(str1)+int(str2)
-        elif oper == "-"
+        elif oper == "-":
             res1 = int(str1)-int(str2)
-        elif oper == "/"
+        elif oper == "/":
             res1 = int(str1)/int(str2)
-        elif oper == '*'
+        elif oper == '*':
             res1 = int(str1)*int(str2)
         
         tom = "The result is "+ str(res1)
