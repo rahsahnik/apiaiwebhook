@@ -27,7 +27,7 @@ def webhook():
     return r
     
     #for wikipedia search
-    elif req.get("result").get("action") == "wiki":        
+    if req.get("result").get("action") == "wiki":        
         param = req.get("result").get("parameters").get("par1")    
         fin = wikipedia.summary(param,sentences=2)    
         res = makeWebhookResult(fin)
