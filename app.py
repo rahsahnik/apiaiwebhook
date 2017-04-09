@@ -25,22 +25,6 @@ def webhook():
     r = make_response(res)
     r.headers['Content-Type'] = 'application/json'
     return r
-
-
-def processRequest(req):
-    #for time
-    if req.get("result").get("action") == "time":        
-        oh = datetime.now().strftime("%H")
-        rh = int(oh) + 5        
-        om = datetime.now().strftime("%M")
-        on = int(om) + 30
-        if on >= 60:
-            on = on % 60    
-            rh = rh+1        
-        tim = datetime.now().strftime("The date is %m-%d-%Y")
-        tim = tim + " And the time is: " + str(rh) + ":" + str(on)
-        res = makeWebhookResult(tim)
-        return res
     
     #for wikipedia search
     elif req.get("result").get("action") == "wiki":        
@@ -59,6 +43,7 @@ def processRequest(req):
         res = makeWebhookResult(answer)
         return res
     
+    #for local time
     elif req.get("result").get("action") == "time":
         app_id = "4393W5-W6E838H957"
         client = wolframalpha.Client(app_id)
@@ -66,34 +51,7 @@ def processRequest(req):
         answer = next(john.results).text
         res = makeWebhookResult(answer)
         return res
-           
-    #for math calculations
-    elif req.get("result").get("action") == "math":
-        str1 = req.get("result").get("parameters").get("number")
-        str2 = req.get("result").get("parameters").get("number1")
-        oper1 = req.get("result").get("parameters").get("operation")
-        
-        if oper1 == "+":
-            res1 = int(str1) + int(str2)
-            tom = "The result is "+ str(res1)
-            res = makeWebhookResult(tom)
-            return res
-        elif oper1 == "-":
-            res1 = int(str1)-int(str2)
-            tom = "The result is "+ str(res1)
-            res = makeWebhookResult(tom)
-            return res
-        elif oper1 == "/":
-            res1 = float(int(str1))/int(str2)
-            tom = "The result is "+ str(res1)
-            res = makeWebhookResult(tom)
-            return res
-        elif oper1 == '*':
-            res1 = int(str1)*int(str2)
-            tom = "The result is "+ str(res1)
-            res = makeWebhookResult(tom)
-            return res
-        
+                   
     #for weather (yahoo api)
     elif req.get("result").get("action") == "yahooWeatherForecast":
         baseurl = "https://query.yahooapis.com/v1/public/yql?"
