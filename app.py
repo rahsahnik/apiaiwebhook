@@ -5,7 +5,7 @@ import json
 import os
 import wikipedia
 import wolframalpha
-from datetime import datetime
+
 
 from flask import Flask
 from flask import request
@@ -40,7 +40,7 @@ def webhook():
         client = wolframalpha.Client(app_id)
         john = client.query(pars)
         answer = next(john.results).text
-        res = makeWebhookResult(answer)
+        res = makeWebhookResult("helladfa")
         return res
     
     #for local time
