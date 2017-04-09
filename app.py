@@ -54,9 +54,9 @@ def processRequest(req):
         str1 = req.get("result").get("parameters").get("number")
         str2 = req.get("result").get("parameters").get("number1")
         oper1 = req.get("result").get("parameters").get("operation")
-        res1=0
-        if oper1 == "+":
-            res1 = int(str1)+int(str2)
+        
+        if oper1 == '+':
+            res1 = "hell"
         elif oper1 == "-":
             res1 = int(str1)-int(str2)
         elif oper1 == "/":
