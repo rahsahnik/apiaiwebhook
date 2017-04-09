@@ -41,7 +41,7 @@ def processRequest(req):
         client = wolframalpha.Client(app_id)
         john = client.query(pars)
         answer = next(john.results).text
-        res = makeWebhookResult("helladfa")
+        res = makeWebhookResult(answer)
         return res
     
     #for local time
