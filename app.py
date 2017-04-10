@@ -118,9 +118,9 @@ def makeWebhookResult1(data):
     if condition is None:
         return {}
 
-
+    cels = (int(condition.get('temp'))-32)*0.566
     speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
-             ", the temperature is " + (condition.get('temp')-32)*0.566 + " " + "Fahrenheit"
+             ", the temperature is " + str(cels) + " " + "Fahrenheit"
     
     return {
         "speech": speech,
