@@ -39,7 +39,7 @@ def processRequest(req):
         
         try:
             pars = req.get("result").get("resolvedQuery")
-            app_id = "Your_wolframalpha+app_id"
+            app_id = "4393W5-W6E838H957"
             client = wolframalpha.Client(app_id)
             john = client.query(pars)
             answer = next(john.results).text
@@ -53,7 +53,7 @@ def processRequest(req):
             
     #for local time
     elif req.get("result").get("action") == "time":
-        app_id = "Your_wolframalpha+app_id"
+        app_id = "4393W5-W6E838H957"
         client = wolframalpha.Client(app_id)
         john = client.query("time in bangalore")
         answer = next(john.results).text
