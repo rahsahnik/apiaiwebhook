@@ -1,6 +1,6 @@
 # Api.ai - multiple webhook simulation implementation in Python
 
-This python code takes the imput json from the api.ai agent and processes the query bases on the action specified in the json file,
+This python code takes the input json from the api.ai agent and processes the query based on the action specified in the json file,
 It uses wikipedia api for basic information retrieval and wolfram alpha api for general facts and questions
 
 #pre-requisites
