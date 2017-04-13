@@ -37,11 +37,11 @@ def processRequest(req):
             john = client.query(pars)
             answer = next(john.results).text
             return {
-            "speech": speech,
-            "displayText": speech,
+            "speech": answer,
+            "displayText": answer,
         
             # "contextOut": [],
-            "source": "from my example"
+            "source": "From wolfram_alpha"
             }
             #res = makeWebhookResult(answer)
             return res
@@ -50,11 +50,11 @@ def processRequest(req):
             req2 = req.get("result").get("parameters").get("any")
             fin1 = wikipedia.summary(req2,sentences=2) 
             return {
-            "speech": speech,
-            "displayText": speech,
+            "speech": fin1,
+            "displayText": fin1,
         
             # "contextOut": [],
-            "source": "from my example"
+            "source": "from wikipedia"
             }
             #res = makeWebhookResult(fin1)
             return res
