@@ -39,8 +39,6 @@ def processRequest(req):
             return {
             "speech": answer,
             "displayText": answer,
-            "data": = answer,
-            #"contextOut": [],
             "source": "From wolfram_alpha"
             }
             #res = makeWebhookResult(answer)
@@ -52,9 +50,7 @@ def processRequest(req):
             return {
             "speech": fin1,
             "displayText": fin1,
-            "data": = fin1,
-            #"contextOut": [],
-            "source": "from wikipedia"
+            "source": "from wikipedia catch block"
             }
             #res = makeWebhookResult(fin1)
             return res
@@ -142,8 +138,6 @@ def makeWebhookResult1(data):
     return {
         "speech": speech,
         "displayText": speech,
-        
-        #"contextOut": [],
         "source": "apiai-weather-webhook-sample"
     }
 
