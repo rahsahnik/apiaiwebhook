@@ -39,7 +39,7 @@ def processRequest(req):
             return {
             "speech": answer,
             "displayText": answer,
-            "data" = {}
+            "data" = {},
             "contextOut": [],
             "source": "From wolfram_alpha"
             }
@@ -52,7 +52,7 @@ def processRequest(req):
             return {
             "speech": fin1,
             "displayText": fin1,
-            "data" = {}
+            "data" = {},
             "contextOut": [],
             "source": "from wikipedia"
             }
