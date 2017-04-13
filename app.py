@@ -36,12 +36,27 @@ def processRequest(req):
             client = wolframalpha.Client(app_id)
             john = client.query(pars)
             answer = next(john.results).text
-            res = makeWebhookResult(answer)
-            return res        
+            return {
+            "speech": speech,
+            "displayText": speech,
+        
+            # "contextOut": [],
+            "source": "from my example"
+            }
+            #res = makeWebhookResult(answer)
+            return res
+        
         except:
             req2 = req.get("result").get("parameters").get("any")
-            fin1 = wikipedia.summary(req2,sentences=2)    
-            res = makeWebhookResult(fin1)
+            fin1 = wikipedia.summary(req2,sentences=2) 
+            return {
+            "speech": speech,
+            "displayText": speech,
+        
+            # "contextOut": [],
+            "source": "from my example"
+            }
+            #res = makeWebhookResult(fin1)
             return res
 
     
