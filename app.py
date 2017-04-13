@@ -31,18 +31,19 @@ def processRequest(req):
     if req.get("result").get("action") == "wolf":
         
         try:
-            req2 = req.get("result").get("parameters").get("any")
-            fin1 = wikipedia.summary(req2,sentences=2)    
-            res = makeWebhookResult(fin1)
-            return res
-        except:
             pars = req.get("result").get("resolvedQuery")
             app_id = "4393W5-W6E838H957"
             client = wolframalpha.Client(app_id)
             john = client.query(pars)
             answer = next(john.results).text
             res = makeWebhookResult(answer)
+            return res        
+        except:
+            req2 = req.get("result").get("parameters").get("any")
+            fin1 = wikipedia.summary(req2,sentences=2)    
+            res = makeWebhookResult(fin1)
             return res
+
     
     #for wikipedia
     elif req.get("result").get("action") == "wiki":        
