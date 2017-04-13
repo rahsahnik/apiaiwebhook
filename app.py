@@ -27,19 +27,12 @@ def webhook():
     return r
    
 def processRequest(req):    
-    #for wikipedia search
-    if req.get("result").get("action") == "wiki":        
-        param = req.get("result").get("parameters").get("any")    
-        fin = wikipedia.summary(param,sentences=2)    
-        res = makeWebhookResult(fin)
-        return res
-    
-    #for wolframalpha
-    elif req.get("result").get("action") == "wolf":
-        
+    #for wolfram alpha
+    if req.get("result").get("action") == "wolf":
+            
         try:
             pars = req.get("result").get("resolvedQuery")
-            app_id = "your wolfram id"
+            app_id = "4393W5-W6E838H957"
             client = wolframalpha.Client(app_id)
             john = client.query(pars)
             answer = next(john.results).text
@@ -50,10 +43,18 @@ def processRequest(req):
             fin1 = wikipedia.summary(req2,sentences=2)    
             res = makeWebhookResult(fin1)
             return res
+
+    
+    #for wikipedia
+    if req.get("result").get("action") == "wiki":        
+        param = req.get("result").get("parameters").get("any")    
+        fin = wikipedia.summary(param,sentences=2)    
+        res = makeWebhookResult(fin)
+        return res
             
     #for local time
     elif req.get("result").get("action") == "time":
-        app_id = "your wolfram id"
+        app_id = "4393W5-W6E838H957"
         client = wolframalpha.Client(app_id)
         john = client.query("time in bangalore")
         answer = next(john.results).text
