@@ -45,8 +45,8 @@ def processRequest(req):
             return res
         
         except:
-            req2 = req.get("result").get("parameters").get("any")
-            fin1 = wikipedia.search(req2) 
+            #req2 = req.get("result").get("parameters").get("any")
+            fin1 = wikipedia.summaery("hell") 
             return {
             "speech": fin1,
             "displayText": fin1,
