@@ -46,7 +46,7 @@ def processRequest(req):
 
     
     #for wikipedia
-    if req.get("result").get("action") == "wiki":        
+    elif req.get("result").get("action") == "wiki":        
         param = req.get("result").get("parameters").get("any")    
         fin = wikipedia.summary(param,sentences=2)    
         res = makeWebhookResult(fin)
