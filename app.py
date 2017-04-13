@@ -39,7 +39,7 @@ def processRequest(req):
             return {
             "speech": answer,
             "displayText": answer,
-            "data": = fin1,
+            #"data": = answer,
             #"contextOut": [],
             "source": "From wolfram_alpha"
             }
@@ -52,7 +52,7 @@ def processRequest(req):
             return {
             "speech": fin1,
             "displayText": fin1,
-            "data": = fin1,
+            #"data": = fin1,
             #"contextOut": [],
             "source": "from wikipedia"
             }
@@ -151,6 +151,6 @@ def makeWebhookResult1(data):
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
 
-    print "Starting app on port %d" % port
+    
 
     app.run(debug=False, port=port, host='0.0.0.0')
