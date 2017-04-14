@@ -34,10 +34,11 @@ def processRequest(req):
             #client = wolframalpha.Client("4393W5-W6E838H957")
             #john = client.query(req.get("result").get("resolvedQuery"))
             #answer = next(john.results).text
-            answer = duckduckgo.get_zci('foo')
+            answer = duckduckgo.get_zci(req.get("result").get("resolvedQuery"))
+            answer1 = answer.encode(utf-8)
             return {
-            "speech": answer,
-            "displayText": answer,
+            "speech": answer1,
+            "displayText": answer1,
             "source": "From wolfram_alpha"
             }
               
