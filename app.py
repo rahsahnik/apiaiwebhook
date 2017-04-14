@@ -28,14 +28,12 @@ def webhook():
    
 def processRequest(req):    
     #for wolfram alpha
-    if req.get("result").get("action") == "wolf":
+    if req.get("result").get("action") == "fact":
         
         try:
-            #client = wolframalpha.Client("4393W5-W6E838H957")
-            #john = client.query(req.get("result").get("resolvedQuery"))
-            #answer = next(john.results).text
-            answer = duckduckgo.get_zci(req.get("result").get("parameters").get("any"))
-            
+            client = wolframalpha.Client("4393W5-W6E838H957")
+            john = client.query(req.get("result").get("resolvedQuery"))
+            answer = next(john.results).text
             return {
             "speech": answer,
             "displayText": answer,
