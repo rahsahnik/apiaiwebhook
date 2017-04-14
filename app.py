@@ -31,37 +31,22 @@ def processRequest(req):
     if req.get("result").get("action") == "wolf":
         
         try:
-            pars = req.get("result").get("resolvedQuery")
-            app_id = "4393W5-W6E838H957"
-            return{
-               "followupEvent": 
-                  "name": "hello_world"
-                  
-               
+            client = wolframalpha.Client("4393W5-W6E838H957")
+            john = client.query(req.get("result").get("resolvedQuery"))
+            answer = next(john.results).text
+            return {
+            "speech": answer,
+            "displayText": answer,
+            "source": "From wolfram_alpha"
             }
-            #client = wolframalpha.Client(app_id)
-            #john = client.query(pars)
-            #answer = next(john.results).text
-            #return {
-            #"speech": answer,
-            #"displayText": answer,
-            #"source": "From wolfram_alpha"
-            #}
               
         except:
             req2 = req.get("result").get("parameters").get("any")
-            return
-            {
-               "followupEvent": {
-                  "name": "hello_world",
-                  
-               }
+            return {
+            "speech": duckduckgo.query(req2).related[0].text,
+            "displayText": duckduckgo.query(req2).related[0].text,
+            "source": "from duckduckgo catch block"
             }
-            #return {
-            #"speech": duckduckgo.query(req2).related[0].text,
-            #"displayText": duckduckgo.query(req2).related[0].text,
-            #"source": "from duckduckgo catch block"
-            #}
             
     #for wikipedia
     elif req.get("result").get("action") == "wiki": 
