@@ -41,7 +41,7 @@ def processRequest(req):
             }
               
         except:
-            req2 = req.get("result").get("parameters").get("any")
+            req2 = req.get("result").get("resolvedQuery")
             reu =  duckduckgo.query(req2)
             
             return {
