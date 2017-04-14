@@ -31,9 +31,10 @@ def processRequest(req):
     if req.get("result").get("action") == "wolf":
         
         try:
-            client = wolframalpha.Client("4393W5-W6E838H957")
-            john = client.query(req.get("result").get("resolvedQuery"))
-            answer = next(john.results).text
+            #client = wolframalpha.Client("4393W5-W6E838H957")
+            #john = client.query(req.get("result").get("resolvedQuery"))
+            #answer = next(john.results).text
+            answer = duckduckgo.get_zci('foo')
             return {
             "speech": answer,
             "displayText": answer,
