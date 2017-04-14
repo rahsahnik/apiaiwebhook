@@ -46,10 +46,16 @@ def processRequest(req):
             
             return {
             "speech": reu.result[0].text,
-            "displayText": reu.result[0].text,
+            "displayText": reu.related[0].text,
             "source": "from duckduckgo catch block"
             }
-            
+    
+    #for duck
+    elif req.get("result").get("action") == "duck":
+        ch = duckduckgo.query(req.get("result").get("resolvedQuery"))
+        res = makeWebhookResult(ch.related[0].text)
+        return res
+    
     #for wikipedia
     elif req.get("result").get("action") == "wiki": 
         
