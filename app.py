@@ -52,9 +52,9 @@ def processRequest(req):
                }
             }
             #return {
-            "speech": duckduckgo.query(req2).related[0].text,
-            "displayText": duckduckgo.query(req2).related[0].text,
-            "source": "from duckduckgo catch block"
+            #"speech": duckduckgo.query(req2).related[0].text,
+            #"displayText": duckduckgo.query(req2).related[0].text,
+            #"source": "from duckduckgo catch block"
             #}
             
     #for wikipedia
