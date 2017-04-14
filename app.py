@@ -49,7 +49,7 @@ def processRequest(req):
             fin1 = duckduckgo.query(req2)
             fin2 = fin1.related[0].text
             return {
-            "speech": fin12,
+            "speech": fin2,
             "displayText": fin2,
             "source": "from wikipedia catch block"
             }
