@@ -33,14 +33,20 @@ def processRequest(req):
         try:
             pars = req.get("result").get("resolvedQuery")
             app_id = "4393W5-W6E838H957"
-            client = wolframalpha.Client(app_id)
-            john = client.query(pars)
-            answer = next(john.results).text
-            return {
-            "speech": answer,
-            "displayText": answer,
-            "source": "From wolfram_alpha"
+            return{
+               "followupEvent": 
+                  "name": "hello_world"
+                  
+               
             }
+            #client = wolframalpha.Client(app_id)
+            #john = client.query(pars)
+            #answer = next(john.results).text
+            #return {
+            #"speech": answer,
+            #"displayText": answer,
+            #"source": "From wolfram_alpha"
+            #}
               
         except:
             req2 = req.get("result").get("parameters").get("any")
