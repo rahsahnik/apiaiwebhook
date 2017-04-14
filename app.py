@@ -35,7 +35,7 @@ def processRequest(req):
             #john = client.query(req.get("result").get("resolvedQuery"))
             #answer = next(john.results).text
             answer = duckduckgo.get_zci(req.get("result").get("resolvedQuery"))
-            answer1 = answer.encode(utf-8)
+            answer1 = answer.encode('utf-8')
             return {
             "speech": answer1,
             "displayText": answer1,
