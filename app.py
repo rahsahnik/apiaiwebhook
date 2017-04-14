@@ -41,9 +41,7 @@ def processRequest(req):
             "displayText": answer,
             "source": "From wolfram_alpha"
             }
-            #res = makeWebhookResult(answer)
-            return res
-        
+              
         except:
             req2 = req.get("result").get("parameters").get("any")
             fin1 = duckduckgo.query(req2)
@@ -53,10 +51,7 @@ def processRequest(req):
             "displayText": fin2,
             "source": "from wikipedia catch block"
             }
-            #res = makeWebhookResult(fin1)
-            return res
-
-    
+            
     #for wikipedia
     elif req.get("result").get("action") == "wiki":        
         param = req.get("result").get("parameters").get("any")    
