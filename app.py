@@ -44,14 +44,22 @@ def processRequest(req):
               
         except:
             req2 = req.get("result").get("parameters").get("any")
-            return {
+            return
+            {
+               "followupEvent": {
+                  "name": "hello_world",
+                  
+               }
+            }
+            #return {
             "speech": duckduckgo.query(req2).related[0].text,
             "displayText": duckduckgo.query(req2).related[0].text,
             "source": "from duckduckgo catch block"
-            }
+            #}
             
     #for wikipedia
-    elif req.get("result").get("action") == "wiki":        
+    elif req.get("result").get("action") == "wiki": 
+        
         param = req.get("result").get("parameters").get("any")    
         fin = wikipedia.summary(param,sentences=2)    
         res = makeWebhookResult(fin)
