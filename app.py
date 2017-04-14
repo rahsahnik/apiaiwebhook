@@ -45,8 +45,8 @@ def processRequest(req):
             reu =  duckduckgo.query(req2)
             
             return {
-            "speech": reu.type,
-            "displayText": reu.type,
+            "speech": reu.result[0].text,
+            "displayText": reu.result[0].text,
             "source": "from duckduckgo catch block"
             }
             
