@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+import duckduckgo
 import urllib
 import json
 import os
@@ -46,10 +46,11 @@ def processRequest(req):
         
         except:
             req2 = req.get("result").get("parameters").get("any")
-            fin1 = wikipedia.summary(req2) 
+            fin1 = duckduckgo.query(req2)
+            fin2 = fin1.related[0].text
             return {
-            "speech": fin1,
-            "displayText": fin1,
+            "speech": fin12,
+            "displayText": fin2,
             "source": "from wikipedia catch block"
             }
             #res = makeWebhookResult(fin1)
