@@ -35,10 +35,10 @@ def processRequest(req):
             #john = client.query(req.get("result").get("resolvedQuery"))
             #answer = next(john.results).text
             answer = duckduckgo.get_zci(req.get("result").get("resolvedQuery"))
-            answer1 = answer.encode("utf-16")
+            
             return {
-            "speech": answer1,
-            "displayText": answer1,
+            "speech": answer,
+            "displayText": answer,
             "source": "From wolfram_alpha"
             }
               
