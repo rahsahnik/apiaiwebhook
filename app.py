@@ -44,12 +44,10 @@ def processRequest(req):
               
         except:
             req2 = req.get("result").get("parameters").get("any")
-            fin1 = duckduckgo.query(req2)
-            fin2 = fin1.related[0].text
             return {
-            "speech": fin2,
-            "displayText": fin2,
-            "source": "from wikipedia catch block"
+            "speech": duckduckgo.query(req2).related[0].text,
+            "displayText": duckduckgo.query(req2).related[0].text,
+            "source": "from duckduckgo catch block"
             }
             
     #for wikipedia
