@@ -34,7 +34,7 @@ def processRequest(req):
             #client = wolframalpha.Client("4393W5-W6E838H957")
             #john = client.query(req.get("result").get("resolvedQuery"))
             #answer = next(john.results).text
-            answer = duckduckgo.get_zci(req.get("result").get("resolvedQuery"))
+            answer = duckduckgo.get_zci(req.get("result").get("parameters").get("any"))
             
             return {
             "speech": answer,
