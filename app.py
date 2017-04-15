@@ -5,7 +5,8 @@ import json
 import os
 import wikipedia
 import wolframalpha
-
+import sys
+from microsofttranslator import Translator
 
 from flask import Flask
 from flask import request
@@ -49,6 +50,18 @@ def processRequest(req):
             "displayText": reu.related[0].text,
             "source": "from duckduckgo catch block"
             }
+    
+    #translator
+    elif req.get("result").get("action") == "tran"
+        translator = Translator('''jkthaha''', '''syosNIlEOJnlLByQGcMS+AIin0iaNERaQVltQvJS6Jg=''')
+        try:
+            code = 'hi'
+            s = translator.translator('hello',code)
+            res = makeWebhookResult(s)
+            return res
+        except:
+            res = makeWebhookResult("Server busy, please try again later")
+            return res
     
     #for duck
     elif req.get("result").get("action") == "duck":
