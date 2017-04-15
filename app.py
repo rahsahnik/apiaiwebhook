@@ -55,8 +55,7 @@ def processRequest(req):
     elif req.get("result").get("action") == "tran":
         translator = Translator('''jkthaha''', '''syosNIlEOJnlLByQGcMS+AIin0iaNERaQVltQvJS6Jg=''')
         try:
-            code = 'hi'
-            s = translator.translate('hello',code)
+            s = translator.translate(req.get("result").get("parameters").get("question"),req.get("result").get("parameters").get("language"))
             res = makeWebhookResult(s)
             return res
         except:
