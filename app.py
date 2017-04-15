@@ -57,7 +57,7 @@ def processRequest(req):
         try:
             code = 'es'
             s = translator.translate('hello',code)
-            res = makeWebhookResult(s)
+            res = makeWebhookResult("doing")
             return res
         except:
             res = makeWebhookResult("Server busy, please try again later")
