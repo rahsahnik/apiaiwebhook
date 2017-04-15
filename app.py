@@ -52,7 +52,7 @@ def processRequest(req):
             }
     
     #translator
-    elif req.get("result").get("action") == "tran"
+    elif req.get("result").get("action") == "tran":
         translator = Translator('''jkthaha''', '''syosNIlEOJnlLByQGcMS+AIin0iaNERaQVltQvJS6Jg=''')
         try:
             code = 'es'
