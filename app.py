@@ -56,7 +56,7 @@ def processRequest(req):
         translator = Translator('''jkthaha''', '''syosNIlEOJnlLByQGcMS+AIin0iaNERaQVltQvJS6Jg=''')
         try:
             code = 'hi'
-            s = translator.translator('hello',code)
+            s = translator.translate('hello',code)
             res = makeWebhookResult(s)
             return res
         except:
