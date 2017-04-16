@@ -7,6 +7,8 @@ import wikipedia
 import wolframalpha
 import sys
 from microsofttranslator import Translator
+import requests
+import random
 
 from flask import Flask
 from flask import request
@@ -62,15 +64,20 @@ def processRequest(req):
             res = makeWebhookResult("Server busy, please try again later")
             return res
     
-    #for duck
-    elif req.get("result").get("action") == "duck":
-        ch = duckduckgo.query(req.get("result").get("resolvedQuery"))
-        res = makeWebhookResult(ch.related[0].text)
-        return res
-    
+    #for news
+    elif req.get("result").get("action") == "news":
+        y = random.randint(1,6)
+        y=1
+        if y == 1:
+            r = requests.get('https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=1412588264c447da83a7c75f1749d6e8')
+            j = r.json()
+            x = j.get('articles')
+            newp = "The headlines are"+x[0]["title"]
+            res = makeWebhookResult(newp)
+            return res
+            
     #for wikipedia
-    elif req.get("result").get("action") == "wiki": 
-        
+    elif req.get("result").get("action") == "wiki":    
         param = req.get("result").get("parameters").get("any")    
         fin = wikipedia.summary(param,sentences=2)    
         res = makeWebhookResult(fin)
