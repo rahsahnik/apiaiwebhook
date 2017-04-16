@@ -67,7 +67,6 @@ def processRequest(req):
     #for news
     elif req.get("result").get("action") == "news":
         y = random.randint(1,6)
-        y=1
         if y == 1:
             r = requests.get('https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=1412588264c447da83a7c75f1749d6e8')
             j = r.json()
@@ -75,7 +74,47 @@ def processRequest(req):
             newp = "The headlines are: "+"1. "+x[0]["title"]+"." +" 2. "+x[1]["title"]+"."+" 3. "+x[2]["title"]+"."+" 4. "+x[3]["title"]+"."+" 5. "+x[4]["title"]+"." 
             res = makeWebhookResult(newp)
             return res
-            
+        
+        elif y==2:
+            r = requests.get('https://newsapi.org/v1/articles?source=the-times-of-india&sortBy=latest&apiKey=1412588264c447da83a7c75f1749d6e8')
+            j = r.json()
+            x = j.get('articles')
+            newp = "The headlines are: "+"1. "+x[0]["title"]+"." +" 2. "+x[1]["title"]+"."+" 3. "+x[2]["title"]+"."+" 4. "+x[3]["title"]+"."+" 5. "+x[4]["title"]+"." 
+            res = makeWebhookResult(newp)
+            return res       
+        
+        elif y==3:
+            r = requests.get('https://newsapi.org/v1/articles?source=independent&sortBy=top&apiKey=1412588264c447da83a7c75f1749d6e8')
+            j = r.json()
+            x = j.get('articles')
+            newp = "The headlines are: "+"1. "+x[0]["title"]+"." +" 2. "+x[1]["title"]+"."+" 3. "+x[2]["title"]+"."+" 4. "+x[3]["title"]+"."+" 5. "+x[4]["title"]+"." 
+            res = makeWebhookResult(newp)
+            return res
+        
+        elif y==4:
+            r = requests.get('https://newsapi.org/v1/articles?source=bbc-sport&sortBy=top&apiKey=1412588264c447da83a7c75f1749d6e8')
+            j = r.json()
+            x = j.get('articles')
+            newp = "The headlines are: "+"1. "+x[0]["title"]+"." +" 2. "+x[1]["title"]+"."+" 3. "+x[2]["title"]+"."+" 4. "+x[3]["title"]+"."+" 5. "+x[4]["title"]+"." 
+            res = makeWebhookResult(newp)
+            return res
+        
+        elif y==5: 
+            r = requests.get('https://newsapi.org/v1/articles?source=ars-technica&sortBy=latest&apiKey=1412588264c447da83a7c75f1749d6e8')
+            j = r.json()
+            x = j.get('articles')
+            newp = "The headlines are: "+"1. "+x[0]["title"]+"." +" 2. "+x[1]["title"]+"."+" 3. "+x[2]["title"]+"."+" 4. "+x[3]["title"]+"."+" 5. "+x[4]["title"]+"." 
+            res = makeWebhookResult(newp)
+            return res
+        
+        elif y==6:
+            r = requests.get('https://newsapi.org/v1/articles?source=the-hindu&sortBy=latest&apiKey=1412588264c447da83a7c75f1749d6e8')
+            j = r.json()
+            x = j.get('articles')
+            newp = "The headlines are: "+"1. "+x[0]["title"]+"." +" 2. "+x[1]["title"]+"."+" 3. "+x[2]["title"]+"."+" 4. "+x[3]["title"]+"."+" 5. "+x[4]["title"]+"." 
+            res = makeWebhookResult(newp)
+            return res
+        
     #for wikipedia
     elif req.get("result").get("action") == "wiki":    
         param = req.get("result").get("parameters").get("any")    
