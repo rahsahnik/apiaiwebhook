@@ -35,7 +35,7 @@ def processRequest(req):
         
         try:
             client = wolframalpha.Client("4393W5-W6E838H957")
-            john = client.query(req.get("result").get("resolvedQuery"))
+            john = client.query("what is the capital of china")
             answer = next(john.results).text
             return {
             "speech": answer,
