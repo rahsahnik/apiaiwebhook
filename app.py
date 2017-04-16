@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import duckduckgo
 import urllib
 import json
 import os
@@ -32,26 +31,14 @@ def webhook():
 def processRequest(req):    
     #for wolfram alpha
     if req.get("result").get("action") == "fact":
-        
-        try:
-            client = wolframalpha.Client("4393W5-W6E838H957")
-            john = client.query("what is the capital of china")
-            answer = next(john.results).text
-            return {
-            "speech": answer,
-            "displayText": answer,
-            "source": "From wolfram_alpha"
-            }
-              
-        except:
-            req2 = req.get("result").get("resolvedQuery")
-            reu =  duckduckgo.query(req2)
-            
-            return {
-            "speech": reu.result[0].text,
-            "displayText": reu.related[0].text,
-            "source": "from duckduckgo catch block"
-            }
+        client = wolframalpha.Client("4393W5-W6E838H957")
+        john = client.query("what is the capital of china")
+        answer = next(john.results).text
+        return {
+        "speech": answer,
+        "displayText": answer,
+        "source": "From wolfram_alpha"
+        }
     
     #translator
     elif req.get("result").get("action") == "tran":
