@@ -72,7 +72,7 @@ def processRequest(req):
             r = requests.get('https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=1412588264c447da83a7c75f1749d6e8')
             j = r.json()
             x = j.get('articles')
-            newp = "The headlines are: \n"+"1. "+ x[0]["title"]
+            newp = "The headlines are: "+"1. "+x[0]["title"]+"." +"2. "+x[1]["title"]+"."+"3. "+x[2]["title"]+"."+"4. "+x[3]["title"]+"."+"5. "+x[4]["title"]+"." 
             res = makeWebhookResult(newp)
             return res
             
