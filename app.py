@@ -32,7 +32,7 @@ def processRequest(req):
     #for wolfram alpha
     if req.get("result").get("action") == "fact":
         client = wolframalpha.Client("4393W5-W6E838H957")
-        john = client.query("what is the capital of china")
+        john = client.query(req.get("result").get("resolvedQuery"))
         answer = next(john.results).text
         return {
         "speech": answer,
