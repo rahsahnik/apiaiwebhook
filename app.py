@@ -31,7 +31,7 @@ def webhook():
 def processRequest(req):    
     #for wolfram alpha
     if req.get("result").get("action") == "fact":
-        client = wolframalpha.Client("4393W5-W6E838H957")
+        client = wolframalpha.Client("Your wolfram alpha app id")
         john = client.query(req.get("result").get("resolvedQuery"))
         answer = next(john.results).text
         return {
@@ -41,8 +41,9 @@ def processRequest(req):
         }
     
     #translator
+    #uses microsoft translator api USE your key here
     elif req.get("result").get("action") == "tran":
-        translator = Translator('''jkthaha''', '''syosNIlEOJnlLByQGcMS+AIin0iaNERaQVltQvJS6Jg=''')
+        translator = Translator('''your microsoft app name''', '''your app client id''')
         try:
             s = translator.translate(req.get("result").get("parameters").get("question"),req.get("result").get("parameters").get("language"))
             res = makeWebhookResult(s)
@@ -52,6 +53,7 @@ def processRequest(req):
             return res
     
     #for news
+    #takes news randomly from different sources use newsapi docs for more info
     elif req.get("result").get("action") == "news":
         y = random.randint(1,6)
         if y == 1:
@@ -111,7 +113,7 @@ def processRequest(req):
             
     #for local time
     elif req.get("result").get("action") == "time":
-        app_id = "4393W5-W6E838H957"
+        app_id = "your wolfram alpha app id"
         client = wolframalpha.Client(app_id)
         john = client.query("time in bangalore")
         answer = next(john.results).text
@@ -147,7 +149,7 @@ def makeWebhookResult(fin):
         "displayText": speech,
         
         # "contextOut": [],
-        "source": "from my example"
+        "source": "from jkthaha webhook"
     }
 
 def makeWebhookResult1(data):
