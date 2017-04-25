@@ -158,13 +158,18 @@ def processRequest(req):
             return makeWebhookResult(answer)
 
         elif test=='definition':
-            re1s = dictionary.meaning(ch)
             try:
-                answer = "The word {0} is a verb and its meaning is {1}".format(ch,re1s['Verb'])
+                try:
+                    answer = "The word {0} is a verb and its meaning is {1}".format(ch, re1s['Verb'])
+                except:
+                    try:
+                        answer = "The word {0} is a noun and its meaning is {1}".format(ch, re1s['Noun'])
+                    except:
+                        answer = "The word {0} is an adjective and its meaning is {1}".format(ch, re1s['Adjective'])
             except:
-                answer = "The word {0} is a noun and its meaning is {1}".format(ch, re1s['Noun'])
-            return makeWebhookResult(answer)    
-
+            answer = re1s
+            return makeWebhookResult(answer)
+            
         elif test=='synonym':
             res = dictionary.synonym(ch)
             try:
