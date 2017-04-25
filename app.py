@@ -158,6 +158,7 @@ def processRequest(req):
             return makeWebhookResult(answer)
 
         elif test=='definition':
+            re1s = dictionary.meaning(ch)
             try:
                 try:
                     answer = "The word {0} is a verb and its meaning is {1}".format(ch, re1s['Verb'])
