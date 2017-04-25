@@ -8,6 +8,7 @@ import sys
 from microsofttranslator import Translator
 import requests
 import random
+from PyDictionary import PyDictionary
 
 from flask import Flask
 from flask import request
@@ -131,6 +132,58 @@ def processRequest(req):
         data = json.loads(result)
         res = makeWebhookResult1(data)
         return res
+    
+    #for dictionary
+    else:
+        dictionary = PyDictionary()
+        ch = req.get('result').get('parameters').get('word')
+        test = req.get('result').get('parameters').get('dictionary')
+        if test == 'antonym':
+            res = dictionary.antonym(ch)
+            try:
+                try:
+                    answer = "Antonym for the word " + ch +" are: {0}, {1}, {2}, {3}, {4}.".format(res[0],res[1],res[2],res[3],res[4])            
+                except:
+                    try:
+                        answer = "Antonym for the word " + ch + " are: {0}, {1}, {2}, {3}.".format(res[0], res[1], res[2], res[3])
+                    except:
+                        try:
+                            answer = "Antonym for the word " + ch + " are: {0}, {1}, {2}.".format(res[0], res[1], res[2])
+
+                        except:
+                            answer= "Antonym for the word " + ch + " are: {0}, {1}.".format(res[0], res[1])
+
+            except:
+                answer = "There is no antonym for this word"
+            return makeWebhook(answer)
+
+        elif test=='definition':
+            res = dictionary.meaning(ch)
+            try:
+                answer = "The word {0} is a verb and its meaning is {1}".format(ch,res['Verb'])
+            except:
+                answer = "The word {0} is a noun and its meaning is {1}".format(ch, res['Noun'])
+            return makeWebhook(answer)    
+
+        elif test=='synonym':
+            res = dictionary.synonym(ch)
+            try:
+                try:
+                    answer = "Synonym for the word " + ch + " are: {0}, {1}, {2}, {3}, {4}.".format(res[0], res[1], res[2],
+                                                                                            res[3], res[4])
+                except:
+                    try:
+                        answer = "Synonym for the word " + ch + " are: {0}, {1}, {2}, {3}.".format(res[0], res[1], res[2],
+                                                                                           res[3])
+                    except:
+                        try:
+                            answer = "Synonym for the word " + ch + " are: {0}, {1}, {2}.".format(res[0], res[1], res[2])
+                        except:
+                            answer = "Synonym for the word " + ch + " are: {0}, {1}.".format(res[0], res[1])
+                return makeWebhook(answer)
+            except:
+                answer = "There is no Synonym for this word"
+                return makeWebhookResult(answer)        
 
 def makeYqlQuery(req):
     result = req.get("result")
