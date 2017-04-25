@@ -155,7 +155,7 @@ def processRequest(req):
 
             except:
                 answer = "There is no antonym for this word"
-            return makeWebhook(answer)
+            return makeWebhookResult(answer)
 
         elif test=='definition':
             res = dictionary.meaning(ch)
@@ -163,7 +163,7 @@ def processRequest(req):
                 answer = "The word {0} is a verb and its meaning is {1}".format(ch,res['Verb'])
             except:
                 answer = "The word {0} is a noun and its meaning is {1}".format(ch, res['Noun'])
-            return makeWebhook(answer)    
+            return makeWebhookResult(answer)    
 
         elif test=='synonym':
             res = dictionary.synonym(ch)
@@ -180,7 +180,7 @@ def processRequest(req):
                             answer = "Synonym for the word " + ch + " are: {0}, {1}, {2}.".format(res[0], res[1], res[2])
                         except:
                             answer = "Synonym for the word " + ch + " are: {0}, {1}.".format(res[0], res[1])
-                return makeWebhook(answer)
+                return makeWebhookResult(answer)
             except:
                 answer = "There is no Synonym for this word"
                 return makeWebhookResult(answer)        
