@@ -167,7 +167,7 @@ def processRequest(req):
                     except:
                         answer = "The word {0} is an adjective and its meaning is {1}".format(ch, re1s['Adjective'])
             except:
-            answer = re1s
+                answer = re1s
             return makeWebhookResult(answer)
             
         elif test=='synonym':
