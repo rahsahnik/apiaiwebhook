@@ -1,0 +1,6 @@
+
+MOV R0,C
+ADD R0,D
+MOV =,R0
+MOV R0,A
+MOV T2,R0
