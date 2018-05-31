@@ -28,7 +28,3 @@ int main()
 printf("Enter an expression:\n");
 yyparse();
 }
-yylex()
-{
-return 1;
-}
